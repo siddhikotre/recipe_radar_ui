@@ -32,33 +32,45 @@ const SousChef = () => {
   };
 
   return (
-    <div>
-      <h2>Sous Chef</h2>
-      <p>Enter your recipe below and Sous Chef will analyze it for you!</p>
+    <div className="sous-chef">
+      {/* Bold and Styled Title */}
+      <h2 className="sous-chef__title text-2xl font-semibold mb-4 text-indigo-800">
+        Sous Chef
+      </h2>
+      <p className="sous-chef__description">
+        Enter your recipe below and your Sous Chef will analyze it for you!
+      </p>
+
+      {/* Recipe Input with Consistent Styling */}
       <textarea
         value={recipe}
         onChange={handleRecipeChange}
-        className="border border-gray-300 p-2 rounded-md mb-4"
+        className="sous-chef__recipe-input border border-gray-300 p-2 rounded-md mb-4"
         rows={10}
         cols={100}
       />
-      <br />
-      <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
+      <br/>
+      {/* Analyze Button with Hover Effect and Primary Color */}
+      <button onClick={handleSubmit} className="sous-chef__analyze-button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
         Analyze Recipe
       </button>
-      {isLoading && <p className="mt-4">Analyzing recipe...</p>}  {/* Display loading message */}
-      {analysis && ( // Only render if analysis data exists
+
+      {/* Loading Message with Clear Visibility */}
+      {isLoading && <p className="sous-chef__loading mt-4">Analyzing recipe...</p>}
+
+      {/* Analysis Section with Consistent Styling and Spacing */}
+      {analysis && (
         <>
-          {analysis.feedback && ( // Display feedback if present
-            <div className="mt-4">
+          {analysis.feedback && (
+            <div className="sous-chef__feedback mt-4">
               <h3>Feedback:</h3>
               <p>{analysis.feedback}</p>
             </div>
           )}
-          {analysis.improvements && ( // Display improvements if present
-            <div className="mt-4">
+          {analysis.improvements && (
+            <div className="sous-chef__improvements mt-4">
               <h3>Improvement Suggestions:</h3>
-              <ul className="list-disc">
+              <ul className="sous-chef__improvements-list list-disc">
                 {analysis.improvements.map((improvement) => (
                   <li key={improvement}>{improvement}</li>
                 ))}

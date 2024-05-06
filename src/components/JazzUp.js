@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 const JazzUp = () => {
   const [dishInfo, setDishInfo] = useState({ name: '', description: '' }); // Combined input
   const [isLoading, setIsLoading] = useState(false);
